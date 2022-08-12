@@ -10,7 +10,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Location {
+public class Location extends AbstractPersistable<Long> {
     private double latitude;
     private double longitude;
 }

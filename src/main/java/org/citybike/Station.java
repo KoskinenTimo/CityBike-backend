@@ -1,14 +1,10 @@
 package org.citybike;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 @Data
 @NoArgsConstructor
@@ -16,8 +12,8 @@ import java.io.IOException;
 @Entity
 public class Station {
 
+    @Id
     private Long id;
-    private Long fid;
     private String nimi;
     private String namn;
     private String name;
@@ -25,8 +21,10 @@ public class Station {
     private String adress;
     private String kaupunki;
     private String stad;
-    private String Operaattori;
+    private String operaattori;
     private int kapasiteetit;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "location_ID")
     private Location location;
 
 
