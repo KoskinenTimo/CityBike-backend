@@ -5,6 +5,7 @@ import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Data
 @NoArgsConstructor
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class Station {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nimi;
     private String namn;
@@ -23,6 +25,7 @@ public class Station {
     private String stad;
     private String operaattori;
     private int kapasiteetit;
+
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "location_ID")
     private Location location;

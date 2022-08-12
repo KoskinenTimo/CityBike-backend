@@ -16,13 +16,24 @@ public class DataController {
     private DataService dataService;
 
 
-    @GetMapping("/dataseed")
-    public void seedData() {
+    @GetMapping("/seeddb")
+    public void seedDb() {
         dataService.addCSVStationsDataToDb();
+        dataService.addCSVJourneysToDb();
     }
 
-    @GetMapping("/testseed/page/{page}")
-    public Page<Station> getStation(@PathVariable int page) {
+    @GetMapping("/resetdb")
+    public void resetDb() {
+        dataService.resetDB();
+    }
+
+    @GetMapping("/testseed/stations/page/{page}")
+    public Page<Station> getStations(@PathVariable int page) {
         return dataService.getAllStations(page);
+    }
+
+    @GetMapping("/testseed/journeys/page/{page}")
+    public Page<Journey> getJourneys(@PathVariable int page) {
+        return dataService.getAllJourneys(page);
     }
 }
