@@ -27,11 +27,6 @@ public class DataController {
         dataService.resetDB();
     }
 
-    @GetMapping("/testseed/stations/page/{page}")
-    public Page<Station> getStations(@PathVariable int page) {
-        return dataService.getAllStations(page);
-    }
-
     @GetMapping("/testseed/journeys/page/{page}")
     public Page<Journey> getJourneys(@PathVariable int page) {
         return dataService.getAllJourneys(page);

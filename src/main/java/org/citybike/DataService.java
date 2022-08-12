@@ -144,11 +144,6 @@ public class DataService {
         return Timestamp.from(instant);
     }
 
-    public Page<Station> getAllStations(int pageNumber) {
-        Pageable pageable = PageRequest.of(pageNumber, 50, Sort.by("id").descending());
-        return stationRepository.findAll(pageable);
-    }
-
     public Page<Journey> getAllJourneys(int pageNumber) {
         Pageable pageable = PageRequest.of(pageNumber, 50, Sort.by("id").descending());
         return journeyRepository.findAll(pageable);
