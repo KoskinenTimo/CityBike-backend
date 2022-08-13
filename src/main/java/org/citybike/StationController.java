@@ -15,9 +15,9 @@ public class StationController {
 
     @GetMapping("/stations")
     public Page<Station> getStations(@RequestParam(required = false, defaultValue = "0") Integer page,
-                                     @RequestParam(required = false) String name) {
-        if (name != null && name.length() > 0) {
-            return stationService.getAllStationsWithName(page,name);
+                                     @RequestParam(required = false) String filter) {
+        if (filter != null && filter.length() > 0) {
+            return stationService.getAllStationsWithName(page,filter);
         }
         return stationService.getAllStations(page);
     }

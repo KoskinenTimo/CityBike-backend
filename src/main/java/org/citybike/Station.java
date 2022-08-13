@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Table(name = "Station")
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

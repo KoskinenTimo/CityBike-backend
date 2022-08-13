@@ -3,6 +3,7 @@ package org.citybike;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +14,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import java.sql.Timestamp;
 
 @Data
+@Table(name = "Journey")
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,11 +24,11 @@ public class Journey extends AbstractPersistable<Long> {
     private Timestamp departureTimeStamp;
     private Timestamp returnTimestamp;
     @OneToOne
-    @JoinColumn(name = "departure_station_id")
-    private Station departureStation;
+    @JoinColumn(name = "departureStationId")
+    private Station departureStationId;
     @OneToOne
-    @JoinColumn(name = "return_station_id")
-    private Station returnStation;
+    @JoinColumn(name="returnStationId")
+    private Station returnStationId;
     private double distance;
     private double duration;
 
