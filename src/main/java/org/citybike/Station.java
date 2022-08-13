@@ -5,9 +5,9 @@ import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Data
+@Table(name = "Station")
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
