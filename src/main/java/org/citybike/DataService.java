@@ -43,15 +43,11 @@ public class DataService {
             List<Station> stations = new ArrayList<>();
             String line;
             bufferedReader.readLine();
-
             while((line = bufferedReader.readLine()) != null) {
                 String[] stationDetailsInList = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-                Long currentStationId = Long.parseLong(stationDetailsInList[1]);
-                Optional<Station> foundStation = stationRepository.findById(currentStationId);
-                if (!foundStation.isPresent()) {
-                    Station stationObject = createStationFromDetailsList(stationDetailsInList);
-                    stations.add(stationObject);
-                }
+                Station stationObject = createStationFromDetailsList(stationDetailsInList);
+                stations.add(stationObject);
+
             }
             System.out.println("Stations added: " + stations.size());
             if (stations.size() != 0) {
@@ -66,7 +62,9 @@ public class DataService {
         File journeysFolder = new File("./src/main/resources/public/data/journeys");
         File[] listOfJourneyFiles = journeysFolder.listFiles();
         readMultipleFilesToList(listOfJourneyFiles);
+        System.out.println("Saving all journeys to DB");
         journeyRepository.saveAll(journeys);
+        System.out.println("Saving journeys to DB done");
     }
 
     public void readMultipleFilesToList(File[] files) {
@@ -101,7 +99,7 @@ public class DataService {
     public Station createStationFromDetailsList(String[] stationDetailsInList) {
         Station stationObject = new Station();
         Location locationObject = new Location();
-        stationObject.setId(Long.parseLong(stationDetailsInList[1]));
+        stationObject.setIdentifier(Long.parseLong(stationDetailsInList[1]));
         stationObject.setNimi(stationDetailsInList[2]);
         stationObject.setNamn(stationDetailsInList[3]);
         stationObject.setName(stationDetailsInList[4]);
@@ -122,11 +120,11 @@ public class DataService {
         journey.setDepartureTimeStamp(parseISODateStringToTimestamp(journeyDetailsInList[0]));
         journey.setReturnTimestamp(parseISODateStringToTimestamp(journeyDetailsInList[1]));
 
-        Optional<Station> departureStation = stationRepository.findById(Long.parseLong(journeyDetailsInList[2]));
-        departureStation.ifPresent(station -> journey.setDepartureStationId(station));
+        Station departureStation = stationRepository.findByIdentifier(Long.parseLong(journeyDetailsInList[2]));
+        journey.setDepartureStationId(departureStation);
 
-        Optional<Station> returnStation = stationRepository.findById(Long.parseLong(journeyDetailsInList[4]));
-        returnStation.ifPresent(station -> journey.setReturnStationId(station));
+        Station returnStation = stationRepository.findByIdentifier(Long.parseLong(journeyDetailsInList[4]));
+        journey.setReturnStationId(returnStation);
 
         journey.setDistance(parseDouble(journeyDetailsInList[6]));
         journey.setDuration(parseDouble(journeyDetailsInList[7]));
@@ -169,12 +167,6 @@ public class DataService {
             }
         }
         return 0;
-    }
-
-    public void resetDB() {
-        stationRepository.deleteAll();
-        locationRepository.deleteAll();
-        journeyRepository.deleteAll();
     }
 
 }

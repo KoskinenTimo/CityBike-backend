@@ -4,18 +4,22 @@ import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import java.util.List;
+
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "Station")
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Station {
+public class Station extends AbstractPersistable<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long identifier;
     private String nimi;
     private String namn;
     private String name;
@@ -29,8 +33,4 @@ public class Station {
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "location_ID")
     private Location location;
-
-
-
-
 }

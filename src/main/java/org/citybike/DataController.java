@@ -22,13 +22,4 @@ public class DataController {
         dataService.addCSVJourneysToDb();
     }
 
-    @GetMapping("/resetdb")
-    public void resetDb() {
-        dataService.resetDB();
-    }
-
-    @GetMapping("/testseed/journeys/page/{page}")
-    public Page<Journey> getJourneys(@PathVariable int page) {
-        return dataService.getAllJourneys(page);
-    }
 }

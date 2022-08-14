@@ -13,13 +13,23 @@ public class JourneyService {
     @Autowired
     private JourneyRepository journeyRepository;
 
-    public Page<Journey> getAllJourneys(int pageNumber) {
-        Pageable pageable = PageRequest.of(pageNumber, 50, Sort.by("id").descending());
+    public Page<Journey> getAllJourneys(int pageNumber,int journeysPerPage) {
+        Pageable pageable = PageRequest.of(pageNumber, journeysPerPage, Sort.by("id").descending());
         return journeyRepository.findAll(pageable);
     }
 
-    public Page<Journey> getAllFilteredJourneys(int pageNumber, String filter) {
-        Pageable pageable = PageRequest.of(pageNumber, 50, Sort.by("id").descending());
+    public Page<Journey> getAllFilteredJourneys(int pageNumber, int journeysPerPage, String filter) {
+        Pageable pageable = PageRequest.of(pageNumber, journeysPerPage, Sort.by("id").descending());
         return journeyRepository.findAllByStationName(filter,pageable);
+    }
+
+    public Page<Journey> getAllJourneysByDepartureStationId(int pageNumber, Long departureStationId) {
+        Pageable pageable = PageRequest.of(pageNumber, 50, Sort.by("id").descending());
+        return journeyRepository.findAllByDepartureStationId(departureStationId,pageable);
+    }
+
+    public Page<Journey> getAllJourneysByReturnStationId(int pageNumber, Long returnStationId) {
+        Pageable pageable = PageRequest.of(pageNumber, 50, Sort.by("id").descending());
+        return journeyRepository.findAllByReturnStationId(returnStationId,pageable);
     }
 }
