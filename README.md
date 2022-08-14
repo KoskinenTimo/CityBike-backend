@@ -28,9 +28,9 @@ Journeys can be requested with path /api/journeys and it can be modified by requ
 Stations can be requested with path /api/stations or to get just one station with given id /api/stations/id. getStations also has 
 request params to modify response page.
 
-@RequestParam(required = false, defaultValue = "0") Integer page (which page is wanted)
-@RequestParam(required = false) String filter (station name filter)
-@RequestParam(required = false, defaultValue = "10") Integer stationsPerPage (how many stations on a page)
+@RequestParam(required = false, defaultValue = "0") Integer page (which page is wanted)  
+@RequestParam(required = false) String filter (station name filter)  
+@RequestParam(required = false, defaultValue = "10") Integer stationsPerPage (how many stations on a page)  
 
 
 
