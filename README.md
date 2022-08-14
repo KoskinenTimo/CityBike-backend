@@ -4,7 +4,7 @@ This is a backend for citybike app. The app is a pre assignment and learning pro
 You can find the frontend in github: https://github.com/KoskinenTimo/CityBike-frontend/
 
 
-To start the app in your editor use: ./gradlew bootRun
+To start the app in your editor use: ./gradlew bootRun  
 // TODO if time, docker container
 
 
@@ -24,4 +24,13 @@ Journeys can be requested with path /api/journeys and it can be modified by requ
 @RequestParam(required = false, defaultValue = "10") int journeysPerPage (how many journeys on a page)  
 @RequestParam(required = false) Long departureStationId (get journeys which have given departure id)  
 @RequestParam(required = false) Long returnStationId (get journeys which have given return id)  
+
+Stations can be requested with path /api/stations or to get just one station with given id /api/stations/id. getStations also has 
+request params to modify response page.
+
+@RequestParam(required = false, defaultValue = "0") Integer page (which page is wanted)
+@RequestParam(required = false) String filter (station name filter)
+@RequestParam(required = false, defaultValue = "10") Integer stationsPerPage (how many stations on a page)
+
+
 
