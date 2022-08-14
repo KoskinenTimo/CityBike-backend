@@ -14,7 +14,7 @@ public class StationController {
     private StationService stationService;
 
 
-    @GetMapping("/stations")
+    @GetMapping("/api/stations")
     public Page<Station> getStations(@RequestParam(required = false, defaultValue = "0") Integer page,
                                      @RequestParam(required = false) String filter,
                                      @RequestParam(required = false, defaultValue = "10") Integer stationsPerPage) {
@@ -24,7 +24,7 @@ public class StationController {
         return stationService.getAllStations(page,stationsPerPage);
     }
 
-    @GetMapping("/stations/{id}")
+    @GetMapping("/api/stations/{id}")
     public Station getStation(@PathVariable Long id) {
         return stationService.getOneStationById(id);
     }

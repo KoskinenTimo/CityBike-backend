@@ -14,7 +14,7 @@ public class JourneyController {
     @Autowired
     private JourneyService journeyService;
 
-    @GetMapping("/journeys")
+    @GetMapping("/api/journeys")
     public Page<Journey> getJourneys(@RequestParam(required = false,defaultValue = "0") int page,
                                      @RequestParam(required = false) String filter,
                                      @RequestParam(required = false, defaultValue = "10") int journeysPerPage,
