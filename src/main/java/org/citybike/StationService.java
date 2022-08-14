@@ -24,6 +24,6 @@ public class StationService {
     }
 
     public Station getOneStationById(Long id) {
-        return stationRepository.findById(id).orElse(null);
+        return stationRepository.findByIdentifier(id);
     }
 }

@@ -38,7 +38,6 @@ public class DataService {
     @Transactional
     public void addCSVStationsDataToDb() {
         try {
-            this.resetDB();
             BufferedReader bufferedReader = new BufferedReader(
                     new FileReader("./src/main/resources/public/data/Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv"));
             List<Station> stations = new ArrayList<>();
@@ -168,12 +167,6 @@ public class DataService {
             }
         }
         return 0;
-    }
-
-    public void resetDB() {
-        stationRepository.deleteAll();
-        locationRepository.deleteAll();
-        journeyRepository.deleteAll();
     }
 
 }
