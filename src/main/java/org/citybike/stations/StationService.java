@@ -26,4 +26,14 @@ public class StationService {
     public Station getOneStationById(Long id) {
         return stationRepository.findByIdentifier(id);
     }
+
+    public Station saveStation(Station station) {
+        return stationRepository.save(station);
+    }
+
+    public Station removeStation(Long id) {
+        Station station = stationRepository.findByIdentifier(id);
+        stationRepository.deleteById(station.getId());
+        return station;
+    }
 }
