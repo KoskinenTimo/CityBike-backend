@@ -14,4 +14,6 @@ public interface StationRepository extends JpaRepository<Station,Long> {
             "OR UPPER(Station.namn) like %?#{[0].toUpperCase()}% " +
             "OR UPPER(Station.name) like %?#{[0].toUpperCase()}%")
     Page<Station> findAllByStationName(@Param("filter") String filter, Pageable pageable);
+
+    Station findByIdentifier(Long identifier);
 }

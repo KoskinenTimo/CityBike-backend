@@ -19,7 +19,8 @@ public class JourneyController {
                                      @RequestParam(required = false) String filter) {
         if (filter != null && filter.length() > 0) {
             return journeyService.getAllFilteredJourneys(page,filter);
+        } else {
+            return journeyService.getAllJourneys(page);
         }
-        return journeyService.getAllJourneys(page);
     }
 }
