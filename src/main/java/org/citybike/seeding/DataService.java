@@ -1,5 +1,11 @@
-package org.citybike;
+package org.citybike.seeding;
 
+import org.citybike.journeys.Journey;
+import org.citybike.journeys.JourneyRepository;
+import org.citybike.locations.Location;
+import org.citybike.locations.LocationRepository;
+import org.citybike.stations.Station;
+import org.citybike.stations.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,9 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DataService {

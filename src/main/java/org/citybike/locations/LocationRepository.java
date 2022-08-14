@@ -1,4 +1,4 @@
-package org.citybike;
+package org.citybike.locations;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

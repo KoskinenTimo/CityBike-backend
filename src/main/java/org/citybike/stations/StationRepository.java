@@ -1,12 +1,10 @@
-package org.citybike;
+package org.citybike.stations;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
 
 public interface StationRepository extends JpaRepository<Station,Long> {
     @Query(value="select Station from #{#entityName} Station where " +
