@@ -33,4 +33,10 @@ request params to modify response page.
 @RequestParam(required = false, defaultValue = "10") Integer stationsPerPage (how many stations on a page)  
 
 
+ISSUED TO SOLVE IF TIME:
+Data sent from controllers is converted with wrong/bad converter, if time, finish the @Bean to amend converter
+Posting/creating new resourses, missing endpoints for both stations and journeys resources
+Services to fetch list of journeys per station, used to get averages and top destinations etc
+
+
 
