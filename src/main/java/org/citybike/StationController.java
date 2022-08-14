@@ -2,28 +2,31 @@ package org.citybike;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+
+
+@CrossOrigin
 @RestController
 public class StationController {
 
     @Autowired
     private StationService stationService;
 
+
     @GetMapping("/stations")
     public Page<Station> getStations(@RequestParam(required = false, defaultValue = "0") Integer page,
-                                     @RequestParam(required = false) String filter) {
+                                     @RequestParam(required = false) String filter,
+                                     @RequestParam(required = false, defaultValue = "10") Integer stationsPerPage) {
         if (filter != null && filter.length() > 0) {
-            return stationService.getAllStationsWithName(page,filter);
+            return stationService.getAllStationsWithName(page,stationsPerPage,filter);
         }
-        return stationService.getAllStations(page);
+        return stationService.getAllStations(page,stationsPerPage);
     }
 
     @GetMapping("/stations/{id}")
     public Station getStation(@PathVariable Long id) {
         return stationService.getOneStationById(id);
     }
+
 }
