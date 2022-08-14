@@ -12,7 +12,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "Station")
+@Table(name = "Station", uniqueConstraints = { @UniqueConstraint(columnNames = { "identifier" }) })
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

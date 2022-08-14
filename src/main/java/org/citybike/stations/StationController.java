@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-
+@CrossOrigin
 @RestController
 public class StationController {
 
@@ -27,4 +27,13 @@ public class StationController {
         return stationService.getOneStationById(id);
     }
 
+    @PostMapping("/api/stations")
+    public Station postStation(@RequestBody Station station) {
+        return stationService.saveStation(station);
+    }
+
+    @DeleteMapping("/api/stations/{id}")
+    public Station deleteStation(@PathVariable Long id) {
+        return stationService.removeStation(id);
+    }
 }
