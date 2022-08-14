@@ -1,12 +1,10 @@
-package org.citybike;
+package org.citybike.stations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 
-
-@CrossOrigin
 @RestController
 public class StationController {
 

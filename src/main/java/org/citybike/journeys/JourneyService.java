@@ -1,4 +1,5 @@
-package org.citybike;
+package org.citybike.journeys;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +14,7 @@ public class JourneyService {
     @Autowired
     private JourneyRepository journeyRepository;
 
-    public Page<Journey> getAllJourneys(int pageNumber,int journeysPerPage) {
+    public Page<Journey> getAllJourneys(int pageNumber, int journeysPerPage) {
         Pageable pageable = PageRequest.of(pageNumber, journeysPerPage, Sort.by("id").descending());
         return journeyRepository.findAll(pageable);
     }

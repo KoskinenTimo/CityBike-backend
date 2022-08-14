@@ -1,4 +1,4 @@
-package org.citybike;
+package org.citybike.stations;
 
 import javax.persistence.*;
 
@@ -6,9 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.citybike.locations.Location;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import java.util.List;
 
 
 @Data

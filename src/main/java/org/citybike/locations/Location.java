@@ -1,4 +1,4 @@
-package org.citybike;
+package org.citybike.locations;
 
 import javax.persistence.Entity;
 import lombok.AllArgsConstructor;
