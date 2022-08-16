@@ -14,10 +14,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,8 +40,10 @@ public class DataService {
     @Transactional
     public void addCSVStationsDataToDb() {
         try {
-            BufferedReader bufferedReader = new BufferedReader(
-                    new FileReader("./src/main/resources/public/data/Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv"));
+            FileInputStream fileInputStream = new FileInputStream(
+                    "./src/main/resources/public/data/Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv");
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream,StandardCharsets.UTF_8);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             List<Station> stations = new ArrayList<>();
             String line;
             bufferedReader.readLine();
@@ -51,8 +51,8 @@ public class DataService {
                 String[] stationDetailsInList = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
                 Station stationObject = createStationFromDetailsList(stationDetailsInList);
                 stations.add(stationObject);
-
             }
+
             System.out.println("Stations added: " + stations.size());
             if (stations.size() != 0) {
                 stationRepository.saveAll(stations);
@@ -79,8 +79,10 @@ public class DataService {
 
     public void readFileToList(String fileName) {
         try {
-            BufferedReader bufferedReader = new BufferedReader(
-                    new FileReader("./src/main/resources/public/data/journeys/" + fileName));
+            FileInputStream fileInputStream = new FileInputStream(
+                    "./src/main/resources/public/data/journeys/" + fileName);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream,StandardCharsets.UTF_8);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String line;
             bufferedReader.readLine();
             System.out.println("Adding journeys from file: " + fileName);
