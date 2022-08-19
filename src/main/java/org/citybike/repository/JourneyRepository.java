@@ -1,6 +1,7 @@
-package org.citybike.journeys;
+package org.citybike.repository;
 
 import org.apache.ibatis.annotations.Param;
+import org.citybike.entity.Journey;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

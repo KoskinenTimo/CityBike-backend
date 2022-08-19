@@ -1,6 +1,8 @@
-package org.citybike.journeys;
+package org.citybike.service;
 
 
+import org.citybike.entity.Journey;
+import org.citybike.repository.JourneyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

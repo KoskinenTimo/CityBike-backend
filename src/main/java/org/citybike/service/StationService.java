@@ -1,11 +1,17 @@
-package org.citybike.stations;
+package org.citybike.service;
 
+import org.citybike.dto.StationRequest;
+import org.citybike.entity.Location;
+import org.citybike.entity.Station;
+import org.citybike.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.NoSuchElementException;
 
 @Service
 public class StationService {
@@ -27,7 +33,24 @@ public class StationService {
         return stationRepository.findByIdentifier(id);
     }
 
-    public Station saveStation(Station station) {
+    public Station saveStation(StationRequest stationRequest) {
+        Location location = Location.build(
+                stationRequest.getLatitude(),
+                stationRequest.getLongitude());
+
+        Station station = Station.build(
+                stationRequest.getIdentifier(),
+                stationRequest.getNimi(),
+                stationRequest.getNamn(),
+                stationRequest.getName(),
+                stationRequest.getOsoite(),
+                stationRequest.getAdress(),
+                stationRequest.getKaupunki(),
+                stationRequest.getStad(),
+                stationRequest.getOperaattori(),
+                stationRequest.getKapasiteetit(),
+                location);
+
         return stationRepository.save(station);
     }
 

@@ -1,11 +1,11 @@
-package org.citybike.seeding;
+package org.citybike.service;
 
-import org.citybike.journeys.Journey;
-import org.citybike.journeys.JourneyRepository;
-import org.citybike.locations.Location;
-import org.citybike.locations.LocationRepository;
-import org.citybike.stations.Station;
-import org.citybike.stations.StationRepository;
+import org.citybike.entity.Journey;
+import org.citybike.repository.JourneyRepository;
+import org.citybike.entity.Location;
+import org.citybike.repository.LocationRepository;
+import org.citybike.entity.Station;
+import org.citybike.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,5 +1,7 @@
-package org.citybike.journeys;
+package org.citybike.controller;
 
+import org.citybike.entity.Journey;
+import org.citybike.service.JourneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
