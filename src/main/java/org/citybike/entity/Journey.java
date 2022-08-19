@@ -21,11 +21,11 @@ public class Journey extends AbstractPersistable<Long> {
     private Timestamp departureTimeStamp;
     private Timestamp returnTimestamp;
     @OneToOne
-    @JoinColumn(name = "departureStationId")
-    private Station departureStationId;
+    @JoinColumn(name = "departureStation")
+    private Station departureStation;
     @OneToOne
-    @JoinColumn(name="returnStationId")
-    private Station returnStationId;
+    @JoinColumn(name="returnStation")
+    private Station returnStation;
     private double distance;
     private double duration;
 

@@ -19,7 +19,7 @@ public class DataController {
     @GetMapping("/api/seeddb")
     public void seedDb() {
         dataService.addCSVStationsDataToDb();
-        //dataService.addCSVJourneysToDb();
+        dataService.addCSVJourneysToDb();
     }
 
 }

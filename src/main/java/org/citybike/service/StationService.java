@@ -4,14 +4,13 @@ import org.citybike.dto.StationRequest;
 import org.citybike.entity.Location;
 import org.citybike.entity.Station;
 import org.citybike.repository.StationRepository;
+import org.citybike.exception.StationNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.NoSuchElementException;
 
 @Service
 public class StationService {
@@ -29,14 +28,18 @@ public class StationService {
         return stationRepository.findAllByStationName(filter,pageable);
     }
 
-    public Station getOneStationById(Long id) {
-        return stationRepository.findByIdentifier(id);
+    public Station getOneStationById(Long id) throws StationNotFoundException {
+        Station station = stationRepository.findByIdentifier(id);
+        if (station == null) {
+            throw new StationNotFoundException("Station not found with id: " + id);
+        }
+        return station;
     }
 
     public Station saveStation(StationRequest stationRequest) {
         Location location = Location.build(
-                stationRequest.getLatitude(),
-                stationRequest.getLongitude());
+                stationRequest.getLocation().getLatitude(),
+                stationRequest.getLocation().getLongitude());
 
         Station station = Station.build(
                 stationRequest.getIdentifier(),
@@ -54,8 +57,11 @@ public class StationService {
         return stationRepository.save(station);
     }
 
-    public Station removeStation(Long id) {
+    public Station removeStation(Long id) throws StationNotFoundException {
         Station station = stationRepository.findByIdentifier(id);
+        if (station == null) {
+            throw new StationNotFoundException("Station not found with id " + id);
+        }
         stationRepository.deleteById(station.getId());
         return station;
     }

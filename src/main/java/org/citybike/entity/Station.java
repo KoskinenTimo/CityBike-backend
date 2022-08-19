@@ -30,6 +30,6 @@ public class Station extends AbstractPersistable<Long> {
     private String operaattori;
     private int kapasiteetit = 0;
     @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "location_ID")
+    @JoinColumn(name = "LOCATION_ID")
     private Location location;
 }

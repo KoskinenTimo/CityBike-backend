@@ -127,10 +127,10 @@ public class DataService {
         journey.setReturnTimestamp(parseISODateStringToTimestamp(journeyDetailsInList[1]));
 
         Station departureStation = stationRepository.findByIdentifier(Long.parseLong(journeyDetailsInList[2]));
-        journey.setDepartureStationId(departureStation);
+        journey.setDepartureStation(departureStation);
 
         Station returnStation = stationRepository.findByIdentifier(Long.parseLong(journeyDetailsInList[4]));
-        journey.setReturnStationId(returnStation);
+        journey.setReturnStation(returnStation);
 
         journey.setDistance(parseDouble(journeyDetailsInList[6]));
         journey.setDuration(parseDouble(journeyDetailsInList[7]));

@@ -2,6 +2,7 @@ package org.citybike.controller;
 
 import org.citybike.dto.StationRequest;
 import org.citybike.entity.Station;
+import org.citybike.exception.StationNotFoundException;
 import org.citybike.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,19 +32,19 @@ public class StationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Station> getStation(@PathVariable Long id) {
+    public ResponseEntity<Station> getStation(@PathVariable Long id) throws StationNotFoundException {
         return ResponseEntity.ok(stationService.getOneStationById(id));
     }
 
     @PostMapping("")
-    public ResponseEntity<Station> postStation(@RequestBody StationRequest stationRequest) {
+    public ResponseEntity<Station> postStation(@Valid @RequestBody StationRequest stationRequest) {
         return new ResponseEntity<>(
                 stationService.saveStation(stationRequest),
                 HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Station> deleteStation(@PathVariable Long id) {
+    public ResponseEntity<Station> deleteStation(@PathVariable Long id) throws StationNotFoundException {
         return ResponseEntity.ok(stationService.removeStation(id));
     }
 }
