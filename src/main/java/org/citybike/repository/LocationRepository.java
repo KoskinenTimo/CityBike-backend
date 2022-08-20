@@ -1,5 +1,6 @@
-package org.citybike.locations;
+package org.citybike.repository;
 
+import org.citybike.entity.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LocationRepository extends JpaRepository<Location,Long> {

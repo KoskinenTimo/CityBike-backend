@@ -1,11 +1,11 @@
-package org.citybike.seeding;
+package org.citybike.service;
 
-import org.citybike.journeys.Journey;
-import org.citybike.journeys.JourneyRepository;
-import org.citybike.locations.Location;
-import org.citybike.locations.LocationRepository;
-import org.citybike.stations.Station;
-import org.citybike.stations.StationRepository;
+import org.citybike.entity.Journey;
+import org.citybike.repository.JourneyRepository;
+import org.citybike.entity.Location;
+import org.citybike.repository.LocationRepository;
+import org.citybike.entity.Station;
+import org.citybike.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -127,10 +127,10 @@ public class DataService {
         journey.setReturnTimestamp(parseISODateStringToTimestamp(journeyDetailsInList[1]));
 
         Station departureStation = stationRepository.findByIdentifier(Long.parseLong(journeyDetailsInList[2]));
-        journey.setDepartureStationId(departureStation);
+        journey.setDepartureStation(departureStation);
 
         Station returnStation = stationRepository.findByIdentifier(Long.parseLong(journeyDetailsInList[4]));
-        journey.setReturnStationId(returnStation);
+        journey.setReturnStation(returnStation);
 
         journey.setDistance(parseDouble(journeyDetailsInList[6]));
         journey.setDuration(parseDouble(journeyDetailsInList[7]));
