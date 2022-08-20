@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @Table(name = "JOURNEYS_TBL")
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "build")
 @Entity
 public class Journey extends AbstractPersistable<Long> {
 
