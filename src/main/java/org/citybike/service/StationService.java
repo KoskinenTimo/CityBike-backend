@@ -31,7 +31,7 @@ public class StationService {
     public Station getOneStationById(Long id) throws StationNotFoundException {
         Station station = stationRepository.findByIdentifier(id);
         if (station == null) {
-            throw new StationNotFoundException("Station not found with id: " + id);
+            throw new StationNotFoundException("Station not found with id " + id);
         }
         return station;
     }

@@ -3,6 +3,7 @@ package org.citybike.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Location extends AbstractPersistable<Long> {
 
-    private double latitude;
-    private double longitude;
+    private String latitude;
+    private String longitude;
 }

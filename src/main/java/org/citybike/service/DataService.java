@@ -115,8 +115,8 @@ public class DataService {
         stationObject.setStad(stationDetailsInList[8]);
         stationObject.setOperaattori(stationDetailsInList[9]);
         stationObject.setKapasiteetit(parseInt(stationDetailsInList[10]));
-        locationObject.setLatitude(parseDouble(stationDetailsInList[11]));
-        locationObject.setLongitude(parseDouble(stationDetailsInList[12]));
+        locationObject.setLatitude("+" + stationDetailsInList[11]);
+        locationObject.setLongitude("+" + stationDetailsInList[12]);
         stationObject.setLocation(locationObject);
         return stationObject;
     }
