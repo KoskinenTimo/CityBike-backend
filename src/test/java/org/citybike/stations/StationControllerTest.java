@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-class StationControllerTest {
+public class StationControllerTest {
     @LocalServerPort
     private Integer port;
     @Autowired
@@ -54,7 +54,7 @@ class StationControllerTest {
     }
 
     @Test
-    public void postAndDeleteStationSuccesfully() throws Exception {
+    public void postAndDeleteStationSuccesfullyWithValidData() throws Exception {
         Long id = new Long(999);
         MvcResult res = mockMvc.perform(get("/api/stations/999"))
                 .andReturn();
@@ -147,7 +147,7 @@ class StationControllerTest {
         Assertions.assertTrue(jsonRes.containsValue("Please give valid latitude coordinate"));
     }
 
-    public Station createValidStation (Long id) {
+    static public Station createValidStation (Long id) {
         Location location = Location.build(
                 "+24.977548",
                 "+60.189556");

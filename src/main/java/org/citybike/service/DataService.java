@@ -136,7 +136,7 @@ public class DataService {
         journey.setDuration(parseDouble(journeyDetailsInList[7]));
         return journey;
     }
-    public Timestamp parseISODateStringToTimestamp(String dateString) {
+    static public Timestamp parseISODateStringToTimestamp(String dateString) {
         Instant instant = null;
         try {
             instant = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
