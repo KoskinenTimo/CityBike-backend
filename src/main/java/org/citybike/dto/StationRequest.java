@@ -3,7 +3,9 @@ package org.citybike.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.citybike.dto.constraint.UniqueIdentifier;
 
+import javax.persistence.Column;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -16,6 +18,7 @@ public class StationRequest {
 
     @NotNull(message = "Identifier is required")
     @Min(value = 1, message = "Identifier must be greater than 0")
+    @UniqueIdentifier(message = "Identifier must be unique, given identifier already exists")
     private Long identifier;
 
     @NotBlank(message = "Nimi is required")
